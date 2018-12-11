@@ -29,7 +29,7 @@ public class Setupenv {
      }
 
 
-     @Before
+
     public void before() throws IOException {
         loadvariables();
         System.setProperty("webdriver.chrome.driver", getClass().getClassLoader().getResource("driver/mac/chromedriver").getPath());
@@ -40,7 +40,7 @@ public class Setupenv {
     }
 
 
-    @After
+
     public void after() {
         driver.quit();
     }
