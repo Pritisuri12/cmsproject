@@ -44,29 +44,30 @@ public class Editfile{
     }
     @Given("^click on channels$")
     public void click_on_channels() {
-        base.driver.findElement(By.linkText("channels")).click();
-        String text= base.driver.findElement(By.id("id45")).getText();
-        Assert.assertEquals("My Hippo Project",text);
-
+        base.driver.findElement(By.linkText("Channels")).click();
     }
 
 
-    @Given("^select My Hippo Project$")
-    public void select_my_hippo_project(){
-        base.driver.findElement(By.linkText("My Hippo Project")).click();
+    @Given("^click on My Hippo Project$")
+    public void click_on_my_hippo_project(){
+        base.driver.findElement(By.className("channel-name")).click();
     }
 
-    @Given("^click on event button$")
-    public void click_on_event_button()
-    {
-
-    }
     @Given("^click on news button$")
+    public void click_on_news_button()
+    {
+        base.driver.findElement(By.id("ext-gen6")).click();
+       // clickb.click();
+        base.after();
+    }
+
+
+   /* @Given("^click on news button$")
     public void click_on_news_button(){
         // WebElement ClickButton = base.driver.findElement(By.xpath());
         // ClickButton.click();
     }
-
+*/
     @Given("^click on edit button$")
     public void click_on_edit_button(){
 

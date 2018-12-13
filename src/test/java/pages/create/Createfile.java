@@ -80,9 +80,13 @@ public class Createfile {
     @Given("^click on downarrow$")
     public void click_on_downarrow() throws InterruptedException {
         Actions action=new Actions(base.driver);
-        WebElement text= base.driver.findElement(By.id("id10a"));
-        action.moveToElement(text);
-        action.click().build().perform();
+        WebElement text= base.driver.findElement(By.id("id130"));
+        action.moveToElement(text).perform();
+        base.driver.findElement(By.id("id130")).click();
+        base.driver.findElement(By.linkText("Add new news item...")).click();
+
+//        action.click().build().perform();
+
         sleep(1000);
 
        /* Actions actions = new Actions(base.driver);
@@ -117,26 +121,32 @@ public class Createfile {
     @Given("^add text on title \"([^\"]*)\"$")
             public void add_text_on_title(String title)
     {
-
+        base.driver.findElement(By.id(" ")).sendKeys("");
     }
 
     @Given("^add Text in introduction \"([^\"]*)\"$")
     public void add_text_in_introduction(String text){
-
+        base.driver.findElement(By.id(" ")).sendKeys("Climate info");
     }
 
     @Given("^click on the Set to now$")
     public void click_on_the_set_to_now()
     {
+        WebElement ClickButton = base.driver.findElement(By.id(""));
+        ClickButton.click();
     }
 
     @When("^click on save and close button$")
     public void click_on_save_and_close(){
+        WebElement ClickButton = base.driver.findElement(By.id(" "));
+        ClickButton.click();
     }
 
 
     @Then("^title is updated with the new text$")
     public void title_is_updated_with_the_new_text(){
+        String url= base.driver.getCurrentUrl();
+        Assert.assertEquals(url, "http://localhost:8080/cms/?1");
         base.after();
     }
 
