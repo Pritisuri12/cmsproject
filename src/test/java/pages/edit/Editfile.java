@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static pages.login.Loginfile.password_xpath;
 import static pages.login.Loginfile.username_xpath;
@@ -18,8 +19,8 @@ public class Editfile{
 
     Setupenv base= new Setupenv();
 
-    @Given("^I am login as Author$")
-    public void i_am_login_as_author() throws IOException {
+    @Given("^I am login as user$")
+    public void i_am_login_as_user() throws IOException {
         base.before();
 
     }
@@ -53,23 +54,29 @@ public class Editfile{
         base.driver.findElement(By.className("channel-name")).click();
     }
 
-    @Given("^click on news button$")
-    public void click_on_news_button()
+    @Given("^click on events button$")
+    public void click_on_events_button()
     {
-        base.driver.findElement(By.id("ext-gen6")).click();
-       // clickb.click();
+
+        WebElement ClickButton = base.driver.findElement(By.id("ext-gen6"));
+        ClickButton.click();
+       ///html/body/div[1]/div[2]/div/div/ul/li[2]/a
+        base.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+       /*
+
+        */
+       // Actions action = new Actions(base.driver);
+        //action.moveToElement(elementToHover).click(findElement(By.linkText("events"))).build().perform();
+      //  base.driver.findElement(By.linkText("events")).click();
+
+    }
+
+
+    @Given("^click on the edit option$")
+    public void click_on_the_edit_option(){
+      //  base.driver.findElement(By.xpath("/html/body/div[2]/div[9]/button/svg/path")).click();
         base.after();
-    }
-
-
-   /* @Given("^click on news button$")
-    public void click_on_news_button(){
-        // WebElement ClickButton = base.driver.findElement(By.xpath());
-        // ClickButton.click();
-    }
-*/
-    @Given("^click on edit button$")
-    public void click_on_edit_button(){
 
     }
 

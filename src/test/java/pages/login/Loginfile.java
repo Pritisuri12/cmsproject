@@ -49,4 +49,18 @@ public class Loginfile {
         Assert.assertEquals(url, "http://localhost:8080/cms/?1");
         base.after();
     }
+
+    @Then("^should error message display for wrong password$")
+    public void should_error_message_display() {
+        String url= base.driver.findElement(By.className("feedbackPanelINFO")).getText();
+        System.out.println(url);
+        base.after();
+    }
+    @Then("^should error message display for empty password$")
+    public void should_error_message_display_for_empty_password() {
+        String url= base.driver.findElement(By.className("feedbackPanelERROR")).getText();
+        //getAttribute("value");
+        System.out.println(url);
+        base.after();
+    }
 }

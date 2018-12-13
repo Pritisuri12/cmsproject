@@ -60,10 +60,10 @@ public class Createfile {
 
     }
 
-    @Given("^click on the news$")
-    public void select_my_hippo_project()
+    @Given("^click on the events$")
+    public void click_on_the_events()
     {
-        base.driver.findElement(By.linkText("news")).click();
+        base.driver.findElement(By.linkText("events")).click();
 
     }
 
@@ -77,15 +77,14 @@ public class Createfile {
         base.driver.findElement(By.linkText("12")).click();
     }
 
-    @Given("^click on downarrow$")
-    public void click_on_downarrow() throws InterruptedException {
+    @Given("^click on down arrow$")
+    public void click_on_down_arrow() throws InterruptedException {
         Actions action=new Actions(base.driver);
         WebElement text= base.driver.findElement(By.id("id130"));
         action.moveToElement(text).perform();
         base.driver.findElement(By.id("id130")).click();
         base.driver.findElement(By.linkText("Add new news item...")).click();
-
-//        action.click().build().perform();
+       // action.click().build().perform();
 
         sleep(1000);
 
@@ -99,7 +98,7 @@ public class Createfile {
 */
     }
 
-    @Given("^select the add the news item$")
+    @Given("^select the add button the event item$")
         public void select_the_first_item_from_menu() {
         WebElement ClickButton = base.driver.findElement(By.linkText("Add new News item"));
         ClickButton.click();
@@ -109,45 +108,71 @@ public class Createfile {
     @Given("enter the name \"([^\"]*)\"$")
     public void enter_the_name(String text)
     {
-    // base.driver.findElement(By.id(news_name)).sendKeys("Climate info");
+     base.driver.findElement(By.id("id1e0")).sendKeys("Climate info");
     }
 
-    @Given("^new popup menu is visible$")
-    public void new_popup_menu_is_visible()
+
+    @Given("^click on OK button$")
+    public void click_on_ok_button()
     {
+        WebElement ok_button=base.driver.findElement(By.id("id1e2"));
+        ok_button.click();
 
     }
 
     @Given("^add text on title \"([^\"]*)\"$")
             public void add_text_on_title(String title)
     {
-        base.driver.findElement(By.id(" ")).sendKeys("");
+        base.driver.findElement(By.id("id1f1")).sendKeys("");
     }
 
     @Given("^add Text in introduction \"([^\"]*)\"$")
     public void add_text_in_introduction(String text){
-        base.driver.findElement(By.id(" ")).sendKeys("Climate info");
+        base.driver.findElement(By.id("id1f2 ")).sendKeys("Climate info");
+    }
+
+    @Given("^add Text in content\"([^\"]*)\"$")
+    public void add_text_in_content(String text){
+        base.driver.findElement(By.id("id1f2 ")).sendKeys("Climate info");
     }
 
     @Given("^click on the Set to now$")
     public void click_on_the_set_to_now()
     {
-        WebElement ClickButton = base.driver.findElement(By.id(""));
+        WebElement ClickButton = base.driver.findElement(By.linkText("Set to now"));
         ClickButton.click();
     }
 
-    @When("^click on save and close button$")
+    @Given("^click on save and close button$")
     public void click_on_save_and_close(){
-        WebElement ClickButton = base.driver.findElement(By.id(" "));
+        WebElement ClickButton = base.driver.findElement(By.id("id1fe"));
         ClickButton.click();
     }
 
 
-    @Then("^title is updated with the new text$")
+    @Given("^title is updated with the new text$")
     public void title_is_updated_with_the_new_text(){
-        String url= base.driver.getCurrentUrl();
-        Assert.assertEquals(url, "http://localhost:8080/cms/?1");
-        base.after();
+        String header_text= base.driver.findElement(By.className("menu-action-text")).getText();
+
     }
 
+    @Given("^move mouse on publication$")
+    public void move_mouse_on_publication()
+    {
+        WebElement publish_tab=base.driver.findElement(By.id("id32d"));
+        publish_tab.click();
+
+    }
+
+    @When("^click on publish request$")
+    public void click_on_publish_request()
+    {
+        base.driver.findElement(By.id("id32d")).click();
+    }
+
+    @Then("^Header is changed to Publication request$")
+    public void header_is_changed_publication_request()
+    {
+
+    }
 }
